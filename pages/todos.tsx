@@ -21,7 +21,7 @@ export default function Home({ users }: Props) {
 
 export async function getServerSideProps() {
   // Server-side requests are mocked by `mocks/server.ts`.
-  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos");
   const users = await res.json();
 
   return {

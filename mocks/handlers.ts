@@ -1,25 +1,104 @@
 import { rest } from 'msw'
-import { Book, Review } from './types'
+import { User } from './types'
 
 export const handlers = [
-  rest.get('https://my.backend/book', (_req, res, ctx) => {
+  rest.get('https://jsonplaceholder.typicode.com/todos', (_req, res, ctx) => {
     return res(
-      ctx.json<Book>({
-        title: 'Lord of the Rings',
-        imageUrl: '/book-cover.jpg',
-        description:
-          'The Lord of the Rings is an epic high-fantasy novel written by English author and scholar J. R. R. Tolkien.',
-      })
+      ctx.json([
+        {
+          "userId": 1,
+          "id": 1,
+          "title": "test 1",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 2,
+          "title": "quis ut nam facilis et officia qui",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 3,
+          "title": "fugiat veniam minus",
+          "completed": false
+        },
+      ])
     )
   }),
-  rest.get('/reviews', (_req, res, ctx) => {
+  rest.get('https://jsonplaceholder.typicode.com/users', (_req, res, ctx) => {
+    
     return res(
-      ctx.json<Review[]>([
+      ctx.json([
         {
-          id: '60333292-7ca1-4361-bf38-b6b43b90cb16',
-          author: 'John Maverick',
-          text: 'Lord of The Rings, is with no absolute hesitation, my most favored and adored book by‑far. The trilogy is wonderful‑ and I really consider this a legendary fantasy series. It will always keep you at the edge of your seat‑ and the characters you will grow and fall in love with!',
+          "id": 1,
+          "name": "Rabaa Ridene",
+          "username": "Rayden",
+          "email": "rabaa.ridene@toto.com",
+          "address": {
+            "street": "Nice poc",
+            "suite": "",
+            "city": "msw",
+            "zipcode": "79466",
+            "geo": {
+              "lat": "-37.3159",
+              "lng": "81.1496"
+            }
+          },
+          "phone": "000000000",
+          "website": "typescript.org",
+          "company": {
+            "name": "JT",
+            "catchPhrase": "Jobteaser phrase",
+            "bs": "harness real-time e-markets"
+          }
         },
+        {
+          "id": 2,
+          "name": "Thomas Claireau",
+          "username": "thomasclaireau",
+          "email": "thomas.claireau@jobteaser.com",
+          "address": {
+            "street": "Rue du typescript",
+            "suite": "000",
+            "city": "Nantes",
+            "zipcode": "44000",
+            "geo": {
+              "lat": "-43.9509",
+              "lng": "-34.4618"
+            }
+          },
+          "phone": "010-692-6593 x09125",
+          "website": "anastasia.net",
+          "company": {
+            "name": "Deckow-Crist",
+            "catchPhrase": "Proactive didactic contingency",
+            "bs": "synergize scalable supply-chains"
+          }
+        },
+        {
+          "id": 3,
+          "name": "Jouanne Jimmy",
+          "username": "Geminii",
+          "email": "jimmy.jouanne@jobteaser.com",
+          "address": {
+            "street": "Rue du mock",
+            "suite": "000",
+            "city": "Le havre",
+            "zipcode": "76620",
+            "geo": {
+              "lat": "-43.9509",
+              "lng": "-34.4618"
+            }
+          },
+          "phone": "0629518695",
+          "website": "jobteaser.com",
+          "company": {
+            "name": "Jobteaser",
+            "catchPhrase": "Jobteaser god",
+            "bs": "For fun"
+          }
+        }
       ])
     )
   }),
